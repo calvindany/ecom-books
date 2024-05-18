@@ -3,6 +3,12 @@ const productsController = require('../controller/productsController');
 
 const routes = express.Router();
 
-routes.use('/', productsController.getProducts);
+routes.get('/', productsController.getProducts);
+
+routes.get('/products');
+
+routes.get('/cart');
+
+routes.get('/checkout');
 
 module.exports = routes;

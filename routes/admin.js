@@ -5,6 +5,8 @@ const routes = express.Router();
 
 routes.get('/add-product', productsContoller.getAddProduct);
 
+routes.get('/products');
+
 routes.post('/add-product', productsContoller.postAddProduct);
 
 module.exports = routes;
