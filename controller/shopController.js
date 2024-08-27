@@ -16,12 +16,25 @@ exports.postAddProduct = (req, res, next) => {
     res.redirect('/');
 }
 
-exports.getProducts = (req, res, next) => {
-    const products = Product.fetchAll();
-    res.render('shop/product-list', {
+exports.getProducts = async (req, res, next) => {
+    const products = await Product.fetchAll();
+
+    res.render('shop/index', {
         prods: products,
         pageTitle: 'Shop',
         path:'/',
+        hasProducts: products.length > 0,
+        activeShop: true,
+        productCSS: true,
+    });
+}
+
+exports.getProducts2 = async (req, res, next) => {
+    const products = await Product.fetchAll();
+    res.render('shop/product-list', {
+        prods: products,
+        pageTitle: 'Products List',
+        path:'/products',
         hasProducts: products.length > 0,
         activeShop: true,
         productCSS: true,
