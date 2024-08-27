@@ -1,6 +1,16 @@
  const Product = require('../models/product');
 
- exports.getAddProduct = (req, res, next) => {
+exports.getProducts = async (req, res, next) => {
+    const products = await Product.fetchAll();
+
+    res.render('admin/product-list', {
+        prods: products,
+        path: '/admin/products',
+        pageTitle: 'Admin Products - List'
+    })
+}
+
+exports.getAddProduct = (req, res, next) => {
     res.render('admin/edit-product', {
         pageTitle: 'Add Product',
         path: '/admin/add-product',
