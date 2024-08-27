@@ -40,3 +40,17 @@ exports.getProducts2 = async (req, res, next) => {
         productCSS: true,
     });
 }
+
+exports.getProductById = async (req, res, next) => {
+    const id = req.params.productId;
+    try {
+        const product = await Product.findById(id)
+        res.render('shop/product-detail', {
+            product: product,
+            pageTitle: 'Products Detail',
+            path:`/products/${id}`,
+        })
+    } catch (err) {
+        console.log(err)
+    }
+}

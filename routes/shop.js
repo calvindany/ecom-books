@@ -7,6 +7,8 @@ routes.get('/', productsController.getProducts);
 
 routes.get('/products', productsController.getProducts2);
 
+routes.get('/products/:productId', productsController.getProductById);
+
 routes.get('/cart');
 
 routes.get('/checkout');

@@ -30,11 +30,7 @@ class Product {
 
     static findById(id) {
         const db = getDb();
-        return db.collection('products').find({_id: id}).next().toArray()
-        .then(product => {
-            // console.log(product)
-        })
-        .catch(err => { console.log(err) });
+        return db.collection('products').find({_id: new ObjectId(id)}).next()
     }
 }
 
