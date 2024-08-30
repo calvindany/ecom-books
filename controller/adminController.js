@@ -34,3 +34,30 @@ exports.postAddProduct = (req, res, next) => {
         console.log(err);
     });
 }
+
+exports.getEditProduct = async (req, res, next) => {
+    const id = req.params.productId;
+    const isEdit = req.query.edit;
+
+    const product = await Product.findById(id);
+
+    if(product) {
+        return res.render('admin/edit-product', {
+            product: product,
+            pageTitle: `${product.title}`,
+            path: `/admin/edit-product/${id}`,
+            editing: isEdit,
+        })
+    }
+    
+    return res.render('404', {
+        pageTitle: "Product is Not Found",
+        path: '/not-found'
+    })
+}
+
+exports.postEditProduct = async (req, res, next) => {
+    const id = req.params.productId;
+
+    
+}
